@@ -1,0 +1,40 @@
+#desktop-header{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0px 4px 8px rgba(0,0,0, 0.4);                               
+
+    background-color: rgba(0,0,0, 0.3);
+
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    right: 16px;
+
+    border-radius: 8px;
+    padding: 8px;
+
+    backdrop-filter: blur(16px); /*This makes the header blury*/
+
+    > #logo{
+        margin-right: auto;
+    }
+
+    > .nav-link, .action-button{
+        color: white;
+        text-decoration: none;
+        font-size: 24px;
+        font-weight: 700;
+    }
+    > .action-button{
+        background-color: var(--primary-color);
+        border-radius: 4px;
+        padding: 4px 16px;
+    }
+}
+
+@media only screen and (max-width: 600px){
+    #desktop-header{
+        display: none;
+    }
+}

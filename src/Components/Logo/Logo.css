@@ -1,0 +1,16 @@
+#logo{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    user-select: none;
+    text-decoration: none;
+
+    > h1{
+        color: white;
+        font-weight: 700;
+    }
+}
+.logo-image{
+    width: 80px;
+}
