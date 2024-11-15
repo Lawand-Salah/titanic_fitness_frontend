@@ -19,9 +19,26 @@
     transition: transform 0.3s ease-in-out;
 }
 .menu-icon.open{
-    transform: totateZ(45deg);
+    transform: rotateZ(45deg);
 }
 
+#mobile-nav{
+    display: none;
+    background-color: rgba(0,0,0,0.8);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: calc(100vh - 100%);
+
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+#mobile-nav.open{
+    display: flex;
+}
 
 @media only screen and (max-width: 600px){
     #mobile-header{
