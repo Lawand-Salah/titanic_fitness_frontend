@@ -33,12 +33,26 @@
 
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 10px;
+    padding-top: 25px;
+    
+    > a{
+        display: flex;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: white;
+        text-decoration: none;
+        font-weight: 900;
+        font-size: 20px;
+    }
+    > a:hover{
+        color: red;
+    }
 }
 
 #mobile-nav.open{
     display: flex;
 }
+
 
 @media only screen and (max-width: 600px){
     #mobile-header{

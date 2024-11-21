@@ -24,7 +24,7 @@ export default function MobileHeader(){
                 className={classString}
                 src={Icon}
                 alt="menu-icon"/>
-            <nav id="mobile-nav" className={ menuOpen ? "open" : "" }>{/*The class name is an if statement here that sayis is menuOpen is true then "open" otherwise its an empty string*/}
+            <nav id="mobile-nav" className={ menuOpen ? "open" : "" }>{/*The class name here is an if statement here that sayis is menuOpen is true then "open" otherwise its an empty string*/}
                 <a href="/">HOME</a>
                 <a href="/workouts">WORKOUTS</a>
                 <a href="/join">JOIN</a>
