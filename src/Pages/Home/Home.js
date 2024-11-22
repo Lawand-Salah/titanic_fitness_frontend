@@ -2,6 +2,7 @@ import "./Home.css";
 import HeroBanner from "../../Components/HeroBanner/HeroBanner";
 import HeroImage from "../../Asset/images/banner_main.png";
 import Wave from "../../Components/Wave/Wave.js";
+import Treadmill from "../../Asset/images/treadmill.png";
 
 export default function Home(){
     return(
@@ -11,6 +12,20 @@ export default function Home(){
                 <h2>Crash through your fitness goals</h2>
             </HeroBanner>
             <Wave text="LET THESE BENEFITS SINK IN"/>
+            <section className="feature-grid">
+                <div className="feature-container">
+                    <img src={Treadmill}/>
+                    <span>State of the art equipment</span>
+                </div>
+                <div className="feature-container">
+                    <img src={Treadmill}/>
+                    <span>State of the art equipment</span>
+                </div>
+                <div className="feature-container wide">
+                    <img src={Treadmill}/>
+                    <span>State of the art equipment</span>
+                </div>
+            </section>
         </>
     )
 }

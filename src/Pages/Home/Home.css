@@ -1,0 +1,19 @@
+.feature-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+
+}
+
+.feature-container{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background-color: var(--navy-blue);
+    border-radius: 8px;
+    justify-content: center;
+}
+
+.feature-container.wide{
+    grid-column: span 2;
+}

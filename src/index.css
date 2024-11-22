@@ -7,6 +7,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   --background-color: #020913;
   --primary-color: #C10000;
+  --navy-blue: #072034;
+
+  background-color: var(--background-color);
+  color: white;
 }
 
 *{
