@@ -1,6 +1,6 @@
 import "./MobileHeader.css";
 import Logo from "../Logo/Logo";
-import Icon from "../../Asset/Images 2/burger_menu_icon.svg";
+import Icon from "../../Asset/Images-2/burger_menu_icon.svg";
 import { useState } from "react";
 
 export default function MobileHeader(){
