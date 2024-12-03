@@ -7,6 +7,9 @@
     padding: 32px;
     display: flex;
     align-items: flex-end;
+
+    position: relative;
+    z-index: 1;
 }
 .footer-links{
     display: flex;
