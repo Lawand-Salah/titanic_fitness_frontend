@@ -2,18 +2,74 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
-
 }
 
 .feature-container{
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap:16px;
     background-color: var(--navy-blue);
     border-radius: 8px;
     justify-content: center;
+    padding: 16px;
+    margin: 16px;
+    background-image: url(../../Asset/images/wave_short.png);
+    background-size: 100% 90px;
+    background-repeat: no-repeat;
+    background-position-y: 100%;
+    > span{
+        font-size: 22px;
+        font-weight: 600;
+    }
 }
-
 .feature-container.wide{
     grid-column: span 2;
+    background-image: url(../../Asset/images/wave_medium.png);
+}
+ 
+@media only screen and (max-width: 800px){
+    .feature-grid{
+        display: flex;
+        flex-direction: column;
+    }
+}
+ 
+.articles-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    min-height: 768px;
+    background-image: url(../../Asset/Images-2/iceberg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    padding: 32px;
+    padding-bottom: 200px;
+    > h2{
+        font-size: clamp(16px, 4vw, 32px);
+        border-bottom: 2px solid rgba(255,255,255,0.3);
+        width: 100%;
+        text-align: center;
+    }
+    > h3 {
+        font-size: clamp(14px, 3vw, 26px);
+    }
+}
+ 
+.articles-container{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 150px;
+    justify-content: center;
+    
+ 
+    > div{
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        border-radius: 10px;
+        max-width: 350px;
+        height: 200px;
+    }
 }
