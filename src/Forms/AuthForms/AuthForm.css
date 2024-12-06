@@ -1,0 +1,43 @@
+.auth-form{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+
+    > input{
+        padding: 16px;
+        border-radius: 4px;
+    }
+    /*NOTE: The & used here is to allow us access an element that has been 
+    indented into another element. The [type=submit] allows us to target
+    buttons with the type "submit".*/
+    & button[type=submit]{ 
+        color: white;
+        background-color: var(--primary-color);
+        border: none;
+        border-radius: 4px;
+        font-weight: 700;
+        font-size: 24px;
+        padding: 8px 16px;
+    }
+}
+
+.auth-options-row{
+    display: flex;
+    justify-content: space-between;
+}
+
+.auth-swap-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.auth-swap-btn{
+    background: none;
+    padding: 0;
+    color: var(--primary-color);
+    border: none;
+    font-weight: 800;
+    cursor: pointer;
+}
