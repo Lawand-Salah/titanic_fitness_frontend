@@ -2,7 +2,7 @@ import "./AuthForm.css";
 import { useState } from "react";
 
 
-export default function RegisterForm(){
+export default function RegisterForm({toggle}){
     const [email,setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
@@ -27,7 +27,7 @@ export default function RegisterForm(){
 
                 <div className="auth-swap-container">
                     <span>Already have an account?</span>
-                    <button className="auth-swap-btn">
+                    <button className="auth-swap-btn" onClick={toggle}>
                         Log In
                     </button>
                 </div>
