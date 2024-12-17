@@ -2,7 +2,7 @@ import "./AuthForm.css";
 import { useState } from "react";
 
 
-export default function AuthForm(toggle){
+export default function AuthForm({toggle}){
     const [email,setEmail] = useState("");
     const [password, setPassword] = useState("");
 
