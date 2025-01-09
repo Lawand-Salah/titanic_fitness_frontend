@@ -3,6 +3,7 @@ import Logo from "../Logo/Logo";
 
 import { useContext } from "react";
 import { UserContext } from "../../Context/UserContext";
+import { Link } from "react-router-dom";
 
 export default function DesktopHeader(){
 
@@ -11,16 +12,16 @@ export default function DesktopHeader(){
     return(
         <header id="desktop-header">
             <Logo/>
-            <a href="/" className="nav-link">HOME</a>
-            <a href="/workouts" className="nav-link">WORKOUTS</a>
+            <Link to="/" className="nav-link">HOME</Link>
+            <Link to="/workouts" className="nav-link">WORKOUTS</Link>
 
             { 
                 user ?
                 <>                    
                     <a className="nav-link" onClick={logout}>Logout</a>
-                    <a href="/profile" className="action-button">My account</a>
+                    <Link to="/profile" className="action-button">My account</Link>
                 </>
-                    :<a href="/join" className="action-button">JOIN</a>
+                    :<Link to="/join" className="action-button">JOIN</Link>
             }
         </header>
     )
