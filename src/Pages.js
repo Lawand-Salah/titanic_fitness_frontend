@@ -2,6 +2,7 @@ import {Routes, Route} from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import Auth from "./Pages/Auth/Auth";
 import Profile from "./Pages/Profile/Profile";
+import ExerciseDb from "./Pages/ExerciseDb/ExerciseDb";
 
 export default function Pages(){
     return(
@@ -14,7 +15,7 @@ export default function Pages(){
                 meaning the url can have any text after the /profile path
                 and still take the user to the profile page*/}
                     <Route path="new_workout" element={<div>new_workout</div>}/>
-                    <Route path="exercise_database" element={<div>exercise_database</div>}/>
+                    <Route path="exercise_database" element={<ExerciseDb/>}/>
                     <Route path="past_workouts" element={<div>past_workouts</div>}/>
                 </Route>
             </Routes>
