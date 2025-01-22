@@ -9,7 +9,7 @@ export default function Logo(){
                 src={LogoImage}
                 alt="titanic fitness logo"
                 />
-                <h1>Titanic Firness</h1>
+                <h1>Titanic Fitness</h1>
         </a>
     )
 }
