@@ -18,8 +18,8 @@ export default function DesktopHeader(){
             { 
                 user ?
                 <>                    
-                    <a className="nav-link" onClick={logout}>Logout</a>
-                    <Link to="/profile" className="action-button">My account</Link>
+                    <a className="nav-link" onClick={logout}>LOGOUT</a>
+                    <Link to="/profile" className="action-button">MY ACCOUNT</Link>
                 </>
                     :<Link to="/join" className="action-button">JOIN</Link>
             }
