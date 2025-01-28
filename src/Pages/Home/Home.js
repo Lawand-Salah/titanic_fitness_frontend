@@ -14,15 +14,15 @@ export default function Home(){
             <Wave text="LET THESE BENEFITS SINK IN"/>
             <section className="feature-grid">
                 <div className="feature-container">
-                    <img src={Treadmill}/>
+                    <img src={Treadmill} alt="Treadmill 1"/>
                     <span>State of the art equipment</span>
                 </div>
                 <div className="feature-container">
-                    <img src={Treadmill}/>
+                    <img src={Treadmill} alt="Treadmill 2"/>
                     <span>State of the art equipment</span>
                 </div>
                 <div className="feature-container wide">
-                    <img src={Treadmill}/>
+                    <img src={Treadmill} alt="Treadmill 3"/>
                     <span>State of the art equipment</span>
                 </div>
             </section>

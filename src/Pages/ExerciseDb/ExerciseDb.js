@@ -9,13 +9,27 @@ export default function ExerciseDb(){
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState("");
 
-    const [exercise, setExercise] = useState([]);
+    const [exercisesCache, setExercisesCache] = useState({});
+
+    const [exercise, setExercises] = useState([]);
 
     function getExercises(){
         let api_endpoint = "https:wger.de/api/v2/exercisebaseinfo/?language=2&limit=900";
 
         if(filters > 0){
             api_endpoint += `&category=${filters}`
+        }
+
+        // if (exercisesCache[api_endpoint]){
+        //     setExercises(exercisesCache[api_endpoint]);
+        //     setIsLoading(false);
+        //     return;
+        // }
+        const cached = localStorage.getItem(api_endpoint);
+        if (cached){
+            setExercises(JSON.parse(cached));
+            setIsLoading(false);
+            return;
         }
 
         axios.get(api_endpoint)
@@ -31,7 +45,17 @@ export default function ExerciseDb(){
                     }
                 }
             }
-            setExercise(foundExercises);
+            
+            // setExercisesCache({
+            //     ...exercisesCache,
+            //     [api_endpoint]: foundExercises
+            // });
+
+            localStorage.setItem(
+                api_endpoint,
+                JSON.stringify(foundExercises)
+            )
+            setExercises(foundExercises);
             setIsLoading(false);
             console.log(foundExercises);
         })
