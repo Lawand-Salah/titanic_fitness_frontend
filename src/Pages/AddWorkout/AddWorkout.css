@@ -1,0 +1,26 @@
+.workout-tracker-wrapper{
+    display: flex;
+    gap: 32px;
+}
+
+.workout-summary-container{
+    flex: 2;
+
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    padding: 16px;
+    background: rgba(2,9,19);
+    background: linear-gradient(90deg, rgba(2,9,19,1) 0%, rgba(7,32,52,1) 100%);
+}
+
+.workout-form{
+    flex: 1;
+    min-width: 500px;
+    border: 1px solid red;
+}
+
+@media only screen and (max-width: 1200px){
+    .workout-tracker-wrapper{
+        flex-direction: column-reverse;
+    }
+}
