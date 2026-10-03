@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# Titanic Fitness — Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The React frontend for Titanic Fitness, a workout-tracking app. Pairs with the [Titanic Fitness Backend](../TITANIC_FITNESS-BACKEND) (FastAPI) — both need to be running for authentication and the exercise database to work.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Home** — hero banner, feature grid, and an articles section (currently placeholder content — see Known Limitations)
+- **Auth** — toggleable login/register form, talking to the backend's `/auth/login` and `/auth/register` endpoints
+- **Profile** (nested routing under `/profile/*`):
+  - **Exercise Database** — browse exercises pulled live from the public [wger.de](https://wger.de/) fitness API, filterable by category
+  - **New Workout** — not yet built (see Known Limitations)
+  - **Past Workouts**, **Track Weight/Calories/Mood** — nav items exist but aren't wired up to pages yet
+- User session persisted via React Context + `localStorage`, so a logged-in user stays logged in across page refreshes
 
-### `npm start`
+## Tech stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [React 18](https://react.dev/) (Create React App)
+- [React Router v6](https://reactrouter.com/)
+- [Axios](https://axios-http.com/) for API calls
+- React Context API for shared user/auth state
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting started
 
-### `npm test`
+```bash
+npm install
+npm start
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser. For login, registration, and the exercise database to work, the [backend](../TITANIC_FITNESS-BACKEND) needs to be running at the same time — the API calls here are hardcoded to `http://localhost:8001`, matching the backend's CORS setup which allows `http://localhost:3001`. (Worth double-checking those ports actually match your own setup when running both side by side.)
 
-### `npm run build`
+## Known limitations
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Passwords end up stored in the browser.** `AuthForm.js` and `RegisterForm.js` both call `login(response.data)` with the backend's raw response — and because the backend's `/auth/login` and `/auth/register` currently return the full stored user record (including the plaintext password, per the backend's own known limitation), `UserContext.js` ends up writing that password straight into `localStorage` via `JSON.stringify(userData)`. It sits there, readable in dev tools, until the user logs out. The real fix needs to happen on the backend side — only return non-sensitive fields (email, username) from `/auth/login` and `/auth/register` — since the frontend can only store whatever it's given.
+- **A real bug in the Exercise Database's API call.** In `ExerciseDb.js`, the wger.de endpoint is written as `"https:wger.de/api/v2/..."` — missing the `//` after `https:`. This isn't just a style nitpick: without `//`, there's no valid host in the URL for the browser to connect to (`wger.de` ends up as part of the *path*, not the *host*), so the request can't reach the real API. The sibling component, `CategoryFilter.js`, has the correct form (`"https://wger.de/..."`) right next to it, which makes this an easy one-line fix. This likely explains the commented-out caching logic in the same file — looks like an earlier attempt to debug a related issue without finding the actual cause.
+- **A navigation mismatch.** The "Past Workouts" nav link in `Profile.js` points to `past_workout` (singular), but the route registered in `Pages.js` is `past_workouts` (plural) — so clicking that link currently goes nowhere. Also worth noting: `past_workouts` is currently just a placeholder `<div>`, not a real page yet.
+- **`AddWorkout.js` is a stub.** It currently renders literal placeholder text (`temp`, `dsadsa`) with no form fields or submit logic, even though the backend already has a working `/workouts/add_exercise` endpoint ready to receive one.
+- **`Home.js`'s articles section is placeholder content** — six `test` divs with no real articles yet.
+- **Backend URL is hardcoded** (`http://localhost:8001/...`) directly in `AuthForm.js` and `RegisterForm.js`. Fine for local development, but would need to move to an environment variable before any real deployment.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Author
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Lawand Salah
